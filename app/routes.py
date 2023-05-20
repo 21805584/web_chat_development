@@ -1,6 +1,7 @@
-from app import app
-from flask import render_template, url_for, request, make_response, redirect, jsonify
+from app import app, db
+from flask import render_template, url_for, request, make_response, redirect, jsonify, flash
 from python_chat_with_ChatGPT import get_response
+from app.controllers import UserController
 
 
 @app.route('/')
@@ -17,6 +18,9 @@ def login():
 def register():
     return render_template('Register_page.html')
 
+@app.route('/forgot_password/')
+def forgot_password():
+    return render_template('Forgot_Password_page.html')
 
 @app.route("/submit", methods=["POST"])
 def submit():
